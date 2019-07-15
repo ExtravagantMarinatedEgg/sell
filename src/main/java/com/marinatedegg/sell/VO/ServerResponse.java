@@ -1,6 +1,7 @@
 package com.marinatedegg.sell.VO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.marinatedegg.sell.enums.ResponseCode;
 import lombok.Data;
@@ -8,7 +9,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 //@Data
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 //保证序列化json的时候，如果是null的话，key也会消失
 public class ServerResponse<T> implements Serializable {
 
