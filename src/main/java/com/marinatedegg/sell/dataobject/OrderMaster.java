@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 订单表
@@ -50,5 +51,9 @@ public class OrderMaster {
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
+
+//    不太好，即对应数据库字段，又为上层服务。穿件dto数据传输层对象，在各层传输使用
+//    @Transient
+//    private List<OrderDetail> orderDetailList;
 
 }
