@@ -19,3 +19,7 @@ server:
 wechat:
   mpAppId: wxc88f38cab217c2bb
   mpAppSecret: 1eeccff772b2df152ddae9fb416087e2
+  mchId: mchIdTest
+  mchKey: mchKeyTest
+  keyPath: keyPathTest需要下载商家证书
+  notifyUrl: http://ludan.natapp1.cc/sell/pay/notify

@@ -14,6 +14,7 @@ import com.marinatedegg.sell.enums.PayStatusEnum;
 import com.marinatedegg.sell.enums.ResultEnum;
 import com.marinatedegg.sell.exception.SellException;
 import com.marinatedegg.sell.service.OrderService;
+import com.marinatedegg.sell.service.PayService;
 import com.marinatedegg.sell.service.ProductInfoService;
 import com.marinatedegg.sell.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -44,6 +45,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderDetailDao detailDao;
+
+    @Autowired
+    private PayService payService;
 
     @Override
     @Transactional
@@ -142,7 +146,7 @@ public class OrderServiceImpl implements OrderService {
 
         //如果已支付，需要退款
         if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())) {
-            //todo
+            payService.refund(orderDTO);
         }
         return orderDTO;
 
