@@ -53,9 +53,9 @@ public class OrderServiceImplTest {
 
     @Test
     public void findOne() {
-        OrderDTO result = orderService.findOne("1563112748602378577");
+        OrderDTO result = orderService.findOne("21321321");
         log.info("【查询单个订单】 result = {}", result);
-        Assert.assertEquals("1563112748602378577", result.getOrderId());
+        Assert.assertEquals("1563175887032445833", result.getOrderId());
     }
 
     @Test

@@ -23,7 +23,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 
     @Override
     public ProductInfo findOne(String productId) {
-        return dao.findById(productId).get();
+        return dao.findById(productId).orElse(null);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Transactional
     public void increaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
-            ProductInfo productInfo = dao.findById(cartDTO.getProductId()).get();
+            ProductInfo productInfo = dao.findById(cartDTO.getProductId()).orElse(null);
             if (productInfo == null) {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
@@ -59,7 +59,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
-            ProductInfo productInfo = dao.findById(cartDTO.getProductId()).get();
+            ProductInfo productInfo = dao.findById(cartDTO.getProductId()).orElse(null);
             if (productInfo == null) {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }

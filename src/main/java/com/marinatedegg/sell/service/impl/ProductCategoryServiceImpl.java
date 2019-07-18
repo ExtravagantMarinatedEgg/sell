@@ -16,7 +16,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public ProductCategory findOne(Integer categoryId) {
-        return dao.findById(categoryId).get();
+        return dao.findById(categoryId).orElse(null);
     }
 
     @Override
