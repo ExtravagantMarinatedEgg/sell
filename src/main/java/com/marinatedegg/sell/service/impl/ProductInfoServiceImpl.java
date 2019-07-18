@@ -7,6 +7,7 @@ import com.marinatedegg.sell.enums.ProductStatusEnum;
 import com.marinatedegg.sell.enums.ResultEnum;
 import com.marinatedegg.sell.exception.SellException;
 import com.marinatedegg.sell.service.ProductInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Slf4j
 public class ProductInfoServiceImpl implements ProductInfoService {
 
     @Autowired
@@ -71,5 +73,38 @@ public class ProductInfoServiceImpl implements ProductInfoService {
             dao.save(productInfo);
         }
 
+    }
+
+    /**
+     * 上架商品
+     * @param productId
+     * @return
+     */
+    @Override
+    public ProductInfo onSale(String productId) {
+        ProductInfo productInfo = dao.findById(productId).orElse(null);
+        if (productId == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productInfo.getProductStatus() == ProductStatusEnum.UP.getCode()) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
+        ProductInfo result = dao.save(productInfo);
+        return result;
+    }
+
+    @Override
+    public ProductInfo offSale(String productId) {
+        ProductInfo productInfo = dao.findById(productId).orElse(null);
+        if (productId == null) {
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if (productInfo.getProductStatus() == ProductStatusEnum.DOWN.getCode()) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
+        ProductInfo result = dao.save(productInfo);
+        return result;
     }
 }

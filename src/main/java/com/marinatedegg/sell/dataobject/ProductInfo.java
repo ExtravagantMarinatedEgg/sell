@@ -1,5 +1,8 @@
 package com.marinatedegg.sell.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.marinatedegg.sell.enums.ProductStatusEnum;
+import com.marinatedegg.sell.utils.EnumUtil;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -49,5 +52,10 @@ public class ProductInfo {
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
+
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum() {
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
+    }
 
 }

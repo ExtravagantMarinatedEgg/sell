@@ -1,7 +1,6 @@
 package com.marinatedegg.sell.controller;
 
 
-import com.marinatedegg.sell.VO.ServerResponse;
 import com.marinatedegg.sell.dto.OrderDTO;
 import com.marinatedegg.sell.enums.ResultEnum;
 import com.marinatedegg.sell.exception.SellException;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,7 +41,7 @@ public class SellerOrderController {
         map.put("orderDTOPage", orderDTOPage);
         map.put("currentPage", page);
         map.put("size", size);
-        return new ModelAndView("order/list");
+        return new ModelAndView("order/list", map);
     }
 
     /**
@@ -67,7 +65,7 @@ public class SellerOrderController {
         }
         map.put("msg", ResultEnum.ORDER_CANCEL_SUCCESS.getMsg());
         map.put("url", "/sell/seller/order/list");
-        return new ModelAndView("common/success");
+        return new ModelAndView("common/success", map);
     }
 
     /**
@@ -112,7 +110,7 @@ public class SellerOrderController {
         }
         map.put("msg", ResultEnum.ORDER_FINISH_SUCCESS.getMsg());
         map.put("url", "/sell/seller/order/list");
-        return new ModelAndView("common/success");
+        return new ModelAndView("common/success", map);
     }
 
 }
