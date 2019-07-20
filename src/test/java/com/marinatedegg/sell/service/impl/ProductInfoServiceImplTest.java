@@ -45,11 +45,11 @@ public class ProductInfoServiceImplTest {
     @Test
     public void save() {
         ProductInfo productInfo = new ProductInfo();
-        productInfo.setProductId("456789");
-        productInfo.setProductName("皮蛋");
+        productInfo.setProductId("1111111111111111");
+        productInfo.setProductName("猫");
         productInfo.setProductPrice(new BigDecimal(1));
         productInfo.setProductStock(100);
-        productInfo.setProductDescription("至尊奢华");
+        productInfo.setProductDescription("喵");
         productInfo.setProductIcon("http://pidan.jpg");
         productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         productInfo.setCategoryType(99);

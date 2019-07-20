@@ -41,15 +41,15 @@
                             <#else>
                                 <tr>
                             </#if>
-                                <td>${product.productId}</td>
-                                <td>${product.productName}</td>
-                                <td><img height="100" width="100" src="${product.productIcon}"/></td>
-                                <td>${product.productPrice}</td>
-                                <td>${product.productStock}</td>
-                                <td>${product.productDescription}</td>
-                                <td>${product.categoryType}</td>
-                                <td>${product.createTime}</td>
-                                <td>${product.updateTime}</td>
+                                <td>${product.productId!''}</td>
+                                <td>${product.productName!''}</td>
+                                <td><img height="100" width="100" src="${product.productIcon!''}"/></td>
+                                <td>${product.productPrice!''}</td>
+                                <td>${product.productStock!''}</td>
+                                <td>${product.productDescription!''}</td>
+                                <td>${product.categoryType!''}</td>
+                                <td>${product.createTime!''}</td>
+                                <td>${product.updateTime!''}</td>
                                 <td>
                                     <a href="/sell/seller/product/index?productId=${product.productId}">修改</a>
                                 </td>
