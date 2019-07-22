@@ -28,6 +28,8 @@ wechat:
   mchKey: mchKeyTest
   keyPath: keyPathTest需要下载商家证书
   notifyUrl: http://ludan.natapp1.cc/sell/pay/notify
+  templateId:
+    orderStatus: IbrUl5sdszksVBXqUYJ0lnIjspeikckiErRqEYf0dzo
 
 password:
   salt: geelysdafaqj23ou 89ZXcj@#$@#$#@KJdjklj;D../dSF.,
@@ -35,4 +37,4 @@ password:
 projectUrl:
   wechatMpAuthorize: http://ludan.natapp1.cc
   wechatOpenAuthorize: http://ludan.natapp1.cc
-  sell: http://127.0.0.1:8080
+  sell: http://ludan.natapp1.cc

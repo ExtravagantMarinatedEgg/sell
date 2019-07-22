@@ -13,9 +13,7 @@ import com.marinatedegg.sell.enums.OrderStatusEnum;
 import com.marinatedegg.sell.enums.PayStatusEnum;
 import com.marinatedegg.sell.enums.ResultEnum;
 import com.marinatedegg.sell.exception.SellException;
-import com.marinatedegg.sell.service.OrderService;
-import com.marinatedegg.sell.service.PayService;
-import com.marinatedegg.sell.service.ProductInfoService;
+import com.marinatedegg.sell.service.*;
 import com.marinatedegg.sell.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -48,6 +46,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PayService payService;
+
+    @Autowired
+    private PushMessageService pushMessageService;
+
+    @Autowired
+    private WebSocket webSocket;
 
     @Override
     @Transactional
@@ -86,6 +90,10 @@ public class OrderServiceImpl implements OrderService {
         List<CartDTO> cartDTOList = orderDTO.getOrderDetailList().stream()
                 .map(e -> new CartDTO(e.getProductId(), e.getProductQuantity())).collect(Collectors.toList());
         productInfoService.decreaseStock(cartDTOList);
+
+        //发送webSocket消息
+        webSocket.sendMessage(orderDTO.getOrderId());
+
         return orderDTO;
 
     }
@@ -149,6 +157,8 @@ public class OrderServiceImpl implements OrderService {
         if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())) {
             payService.refund(orderDTO);
         }
+        // 推送消息 异常 catch掉 不会回滚影响主要业务
+        pushMessageService.orderStatus(orderDTO);
         return orderDTO;
 
     }
