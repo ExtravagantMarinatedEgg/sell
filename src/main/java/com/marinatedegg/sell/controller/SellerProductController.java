@@ -5,6 +5,7 @@ import com.marinatedegg.sell.dataobject.ProductCategory;
 import com.marinatedegg.sell.dataobject.ProductInfo;
 import com.marinatedegg.sell.enums.ProductStatusEnum;
 import com.marinatedegg.sell.enums.ResultEnum;
+import com.marinatedegg.sell.exception.SellException;
 import com.marinatedegg.sell.form.OrderForm;
 import com.marinatedegg.sell.form.ProductForm;
 import com.marinatedegg.sell.service.ProductCategoryService;
@@ -70,7 +71,7 @@ public class SellerProductController {
         ProductInfo productInfo = new ProductInfo();
         try {
             productInfo = productInfoService.offSale(productId);
-        } catch (Exception e) {
+        } catch (SellException e) {
             log.error("【商品下架】 发生异常 {}", e);
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/order/list");
@@ -95,7 +96,7 @@ public class SellerProductController {
         ProductInfo productInfo = new ProductInfo();
         try {
             productInfo = productInfoService.onSale(productId);
-        } catch (Exception e) {
+        } catch (SellException e) {
             log.error("【商品上架】 发生异常 {}", e);
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/product/list");
@@ -161,7 +162,7 @@ public class SellerProductController {
 
 
             productInfoService.save(productInfo);
-        } catch (Exception e) {
+        } catch (SellException e) {
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/product/index");
             return new ModelAndView("common/error", map);

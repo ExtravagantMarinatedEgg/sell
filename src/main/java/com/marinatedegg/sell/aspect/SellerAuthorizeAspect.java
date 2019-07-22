@@ -26,6 +26,7 @@ public class SellerAuthorizeAspect {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
+//todo
 
 //    @Pointcut("execution(public * com.marinatedegg.sell.controller.Seller*.*(..))" +
 //    "&& !execution(public * com.marinatedegg.sell.controller.SellerUserController.*(..))")

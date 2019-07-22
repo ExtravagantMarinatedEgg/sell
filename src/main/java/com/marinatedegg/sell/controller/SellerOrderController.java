@@ -80,7 +80,7 @@ public class SellerOrderController {
         OrderDTO orderDTO = new OrderDTO();
         try {
             orderDTO = orderService.findOne(orderId);
-        } catch (Exception e) {
+        } catch (SellException e) {
             log.error("【卖家端查询订单详情】 发生异常 {}", e);
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/order/list");
@@ -102,7 +102,7 @@ public class SellerOrderController {
         try {
             OrderDTO orderDTO = orderService.findOne(orderId);
             orderService.finish(orderDTO);
-        } catch (Exception e) {
+        } catch (SellException e) {
             log.error("【卖家端完成订单】 发生异常 {}", e);
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/order/list");
