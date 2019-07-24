@@ -1,6 +1,7 @@
 package com.marinatedegg.sell.controller;
 
 import com.marinatedegg.sell.VO.ProductIndexVO;
+import com.marinatedegg.sell.VO.ServerResponse;
 import com.marinatedegg.sell.dataobject.ProductCategory;
 import com.marinatedegg.sell.dataobject.ProductInfo;
 import com.marinatedegg.sell.enums.ProductStatusEnum;
@@ -23,8 +24,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
@@ -169,6 +172,13 @@ public class SellerProductController {
         }
         map.put("url", "/sell/seller/product/list");
         return new ModelAndView("common/success", map);
+    }
+
+    @PostMapping("/upload")
+    public ServerResponse upload(@RequestParam(value = "upload_file",required = false) MultipartFile file,HttpServletRequest request){
+
+        request.getSession().getServletContext().getRealPath("upload");
+        return null;
     }
 
 

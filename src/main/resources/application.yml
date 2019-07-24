@@ -31,10 +31,27 @@ wechat:
   templateId:
     orderStatus: IbrUl5sdszksVBXqUYJ0lnIjspeikckiErRqEYf0dzo
 
-password:
-  salt: geelysdafaqj23ou 89ZXcj@#$@#$#@KJdjklj;D../dSF.,
-
 projectUrl:
   wechatMpAuthorize: http://ludan.natapp1.cc
   wechatOpenAuthorize: http://ludan.natapp1.cc
   sell: http://ludan.natapp1.cc
+
+logging:
+  level:
+    com.imooc.dataobject.mapper: trace
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+password:
+  salt: geelysdafaqj23ou 89ZXcj@#$@#$#@KJdjklj;D../dSF.,
+ftp:
+  user: ftpuser
+  pass: 123456
+#  server:
+  ip: 39.105.115.22
+  port: 21
+  remotePath: img
+  httpPrefix: http://img.marinatedegg.top:81/
+
