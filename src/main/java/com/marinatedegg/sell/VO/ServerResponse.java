@@ -14,6 +14,8 @@ import java.io.Serializable;
 //保证序列化json的时候，如果是null的话，key也会消失
 public class ServerResponse<T> implements Serializable {
 
+
+    private static final long serialVersionUID = -614799646370502682L;
     private Integer status;
     private String msg;
     private T data;

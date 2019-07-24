@@ -36,6 +36,7 @@ projectUrl:
   wechatOpenAuthorize: http://ludan.natapp1.cc
   sell: http://ludan.natapp1.cc
 
+#设置日志等级mapper
 logging:
   level:
     com.imooc.dataobject.mapper: trace

@@ -11,12 +11,15 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class ProductIndexVO {
+public class ProductIndexVO implements Serializable {
 
+
+    private static final long serialVersionUID = 8906814290313439751L;
     /*商品Id*/
     private String productId;
 
